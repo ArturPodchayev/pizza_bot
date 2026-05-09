@@ -16,7 +16,7 @@ TEXTS = {
             "📅 Даты: 22, 23 и 24 мая\n"
             "🕓 Время: 17:00–22:00\n"
             "🎟 Вход свободный\n"
-            "📣 Следите за всеми анонсами фестиваля в Telegram — @bitcoinpizzafest и в Instagram — @bitcoinpizzafest\n\n"
+            "📣 Следите за всеми анонсами фестиваля в Telegram — @bitcoinpizzafest и в Instagram — <a href=\"https://www.instagram.com/bitcoinpizzafest\">@bitcoinpizzafest</a>\n\n"
             "До встречи на фестивале! 🙌"
         ),
     },
@@ -37,7 +37,7 @@ TEXTS = {
             "📅 Sanalar: 22, 23 va 24-may\n"
             "🕓 Vaqt: 17:00–22:00\n"
             "🎟 Kirish bepul\n"
-            "📣 Festivalning barcha e'lonlarini Telegram kanalimiz — @bitcoinpizzafest va Instagram sahifamiz — @bitcoinpizzafest orqali kuzatib boring.\n\n"
+            "📣 Festivalning barcha e'lonlarini Telegram kanalimiz — @bitcoinpizzafest va Instagram sahifamiz — <a href=\"https://www.instagram.com/bitcoinpizzafest\">@bitcoinpizzafest</a> orqali kuzatib boring.\n\n"
             "Festivalda ko'rishguncha! 🙌"
         ),
     },
@@ -58,7 +58,7 @@ TEXTS = {
             "📅 Dates: May 22, 23, and 24\n"
             "🕓 Time: 17:00–22:00\n"
             "🎟 Free entry\n"
-            "📣 Follow all festival announcements on our Telegram channel — @bitcoinpizzafest and on Instagram — @bitcoinpizzafest\n\n"
+            "📣 Follow all festival announcements on our Telegram channel — @bitcoinpizzafest and on Instagram — <a href=\"https://www.instagram.com/bitcoinpizzafest\">@bitcoinpizzafest</a>\n\n"
             "See you at the festival! 🙌"
         ),
     },
