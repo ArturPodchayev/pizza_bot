@@ -1,4 +1,5 @@
 import logging
+import time
 from aiogram import Bot, Router, F
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
@@ -153,6 +154,7 @@ async def step_phone_wrong(message: Message, state: FSMContext) -> None:
 
 
 GIVEAWAY_BTN_TEXTS = {TEXTS[lang]["giveaway_btn"] for lang in TEXTS}
+_giveaway_cooldown: dict[int, float] = {}
 
 GIVEAWAY_PHOTO_MAP = {
     "ru": "giveaway_ru.png",
@@ -163,6 +165,12 @@ GIVEAWAY_PHOTO_MAP = {
 
 @router.message(F.text.in_(GIVEAWAY_BTN_TEXTS))
 async def handle_giveaway(message: Message) -> None:
+    now = time.time()
+    user_id = message.from_user.id
+    if now - _giveaway_cooldown.get(user_id, 0) < 3:
+        return
+    _giveaway_cooldown[user_id] = now
+
     user = await db.get_user(message.from_user.id)
     if not user:
         return
