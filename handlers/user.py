@@ -3,11 +3,14 @@ from aiogram import Bot, Router, F
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
-from aiogram.types import LinkPreviewOptions, Message, CallbackQuery
+from aiogram.types import FSInputFile, LinkPreviewOptions, Message, CallbackQuery
 
 import db
 from texts import TEXTS, LANGUAGE_BUTTONS
-from keyboards import language_keyboard, phone_keyboard, update_keyboard, subscribe_keyboard, remove_keyboard
+from keyboards import (
+    language_keyboard, phone_keyboard, update_keyboard,
+    subscribe_keyboard, giveaway_menu_keyboard, giveaway_participate_keyboard, remove_keyboard,
+)
 
 router = Router()
 logger = logging.getLogger(__name__)
@@ -129,6 +132,10 @@ async def cb_check_subscription(callback: CallbackQuery, state: FSMContext, bot:
             TEXTS[lang]["success"],
             link_preview_options=LinkPreviewOptions(is_disabled=True),
         )
+        await callback.message.answer(
+            TEXTS[lang]["giveaway_btn"],
+            reply_markup=giveaway_menu_keyboard(lang),
+        )
         await state.clear()
         await callback.answer()
     else:
@@ -142,4 +149,27 @@ async def step_phone_wrong(message: Message, state: FSMContext) -> None:
     await message.answer(
         TEXTS[lang]["wrong_phone"],
         reply_markup=phone_keyboard(lang),
+    )
+
+
+GIVEAWAY_BTN_TEXTS = {TEXTS[lang]["giveaway_btn"] for lang in TEXTS}
+
+GIVEAWAY_PHOTO_MAP = {
+    "ru": "giveaway_ru.png",
+    "uz": "giveaway_uz.png",
+    "en": "giveaway_en.png",
+}
+
+
+@router.message(F.text.in_(GIVEAWAY_BTN_TEXTS))
+async def handle_giveaway(message: Message) -> None:
+    user = await db.get_user(message.from_user.id)
+    if not user:
+        return
+
+    lang = user["language"] or "ru"
+    await message.answer_photo(
+        photo=FSInputFile(GIVEAWAY_PHOTO_MAP[lang]),
+        caption=TEXTS[lang]["giveaway_text"],
+        reply_markup=giveaway_participate_keyboard(lang),
     )

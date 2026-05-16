@@ -12,6 +12,20 @@ TEXTS = {
         "cancelled": "Окей, ваши данные сохранены без изменений.",
         "subscribe_prompt": "📣 Подпишитесь на Telegram-канал фестиваля — @bitcoinpizzafest",
         "not_subscribed": "Похоже, вы ещё не подписались на канал. Подпишитесь и нажмите «Проверить подписку ✅» ещё раз.",
+        "giveaway_btn": "✈️ Розыгрыш авиабилетов",
+        "participate_btn": "Участвую",
+        "giveaway_text": (
+            "🧳 Пора собирать чемоданы!\n\n"
+            "Дарим 2 авиабилета от Centrum Air для путешествия мечты ✈️\n\n"
+            "Представьте: сегодня вы на Bitcoin Pizza Fest 2026, а уже совсем скоро — гуляете по улочкам новой страны, отдыхаете у моря или планируете спонтанное путешествие, о котором давно мечтали 🏖\n\n"
+            "Что нужно сделать для участия?\n"
+            "🧡 Нажать кнопку «Участвую» под этим постом\n\n"
+            "Лайфхак для тех, кто хочет повысить шансы на победу 👇\n"
+            "Кидайте бусты каналу и приглашайте друзей по своей реферальной ссылке из бота, чтобы повысить шансы на победу 🔥\n\n"
+            "В последний день Bitcoin Pizza Fest 2026 — 24 мая в 20:00 — бот автоматически определит одного победителя розыгрыша 🎉\n\n"
+            "📣 Результаты розыгрыша будут опубликованы в Telegram-канале @bitcoinpizzafest.\n\n"
+            "* Авиабилеты распространяются на любые доступные направления и рейсы, представленные на официальном сайте Centrum Air на момент оформления поездки."
+        ),
         "success": (
             "🔥 Спасибо! Вы успешно зарегистрированы на Bitcoin Pizza Fest 2026.\n\n"
             "🍕 Первый в Ташкенте уличный фестиваль, где пиццу можно купить за Bitcoin.\n\n"
@@ -43,6 +57,20 @@ TEXTS = {
         "cancelled": "Okay, ma'lumotlaringiz o'zgarishsiz saqlandi.",
         "subscribe_prompt": "📣 Festivalning Telegram-kanaliga obuna bo'ling — @bitcoinpizzafest",
         "not_subscribed": "Aftidan, siz hali kanalga obuna bo'lmagansiz. Obuna bo'ling va «Obunani tekshirish ✅» tugmasini yana bir marta bosing.",
+        "giveaway_btn": "✈️ Aviachiptalar tanlovi",
+        "participate_btn": "Ishtirok etaman",
+        "giveaway_text": (
+            "🧳 Chamadonlarni yig'ish vaqti keldi!\n\n"
+            "Orzudagi sayohat uchun Centrum Air'dan 2 ta aviachipta sovg'a qilamiz ✈️\n\n"
+            "Tasavvur qiling: bugun siz Bitcoin Pizza Fest 2026'dasiz, yaqin kunlarda esa yangi mamlakat ko'chalarida sayr qilasiz, dengiz bo'yida hordiq chiqarasiz yoki anchadan beri orzu qilgan sayohatingizga yo'l olasiz 🏖\n\n"
+            "Ishtirok etish uchun nima qilish kerak?\n"
+            "🧡 Shu post ostidagi \"Ishtirok etaman\" tugmasini bosish\n\n"
+            "Yutish imkoniyatini oshirmoqchi bo'lganlar uchun kichik maslahat 👇\n"
+            "Kanalga boost yuboring va botdagi referal havolangiz orqali do'stlaringizni taklif qiling — bu yutish imkoniyatini oshiradi 🔥\n\n"
+            "Bitcoin Pizza Fest 2026'ning so'nggi kuni — 24-may kuni soat 20:00 da bot avtomatik tarzda 1 nafar g'olibni aniqlaydi 🎉\n\n"
+            "📣 Tanlov natijalari @bitcoinpizzafest Telegram-kanalida e'lon qilinadi.\n\n"
+            "* Aviachiptalar sayohatni rasmiylashtirish vaqtida Centrum Air rasmiy saytida mavjud bo'lgan barcha yo'nalish va parvozlarga amal qiladi."
+        ),
         "success": (
             "🔥 Rahmat! Siz Bitcoin Pizza Fest 2026 festivalidan muvaffaqiyatli ro'yxatdan o'tdingiz.\n\n"
             "🍕 Bitcoin orqali pitsa xarid qilish mumkin bo'lgan Toshkentdagi birinchi ko'cha festivali.\n\n"
@@ -74,6 +102,20 @@ TEXTS = {
         "cancelled": "Okay, your data remains unchanged.",
         "subscribe_prompt": "📣 Subscribe to the festival Telegram channel — @bitcoinpizzafest",
         "not_subscribed": "It looks like you haven't subscribed to the channel yet. Please subscribe and tap \"Check subscription ✅\" again.",
+        "giveaway_btn": "✈️ Airline Tickets Giveaway",
+        "participate_btn": "Participate",
+        "giveaway_text": (
+            "🧳 Time to pack your bags!\n\n"
+            "We're giving away 2 airline tickets from Centrum Air for the trip of your dreams ✈️\n\n"
+            "Imagine this: today you're at Bitcoin Pizza Fest 2026, and very soon you could be strolling through the streets of a new country, relaxing by the sea, or heading off on a spontaneous adventure you've been dreaming about 🏖\n\n"
+            "What do you need to do to participate?\n"
+            "🧡 Tap the \"Participate\" button under this post\n\n"
+            "A little lifehack for those who want to boost their chances of winning 👇\n"
+            "Send boosts to the channel and invite friends using your referral link from the bot to increase your chances of winning 🔥\n\n"
+            "On the final day of Bitcoin Pizza Fest 2026 — May 24 at 20:00 — the bot will automatically select one giveaway winner 🎉\n\n"
+            "📣 The giveaway results will be announced on the @bitcoinpizzafest Telegram channel.\n\n"
+            "* The airline tickets are valid for any available destinations and flights listed on the official Centrum Air website at the time of booking."
+        ),
         "success": (
             "🔥 Thank you! You have successfully registered for Bitcoin Pizza Fest 2026.\n\n"
             "🍕 The first street festival in Tashkent where you can buy pizza with Bitcoin.\n\n"

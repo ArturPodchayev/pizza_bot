@@ -7,6 +7,8 @@ from aiogram.types import (
 )
 from texts import TEXTS
 
+GIVEAWAY_URL = "https://t.me/randombeast_bot/devapp?startapp=join_yh3r2au7nhcb8sy&startApp=join_yh3r2au7nhcb8sy"
+
 
 def language_keyboard() -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
@@ -52,6 +54,21 @@ def subscribe_keyboard(lang: str) -> InlineKeyboardMarkup:
         inline_keyboard=[
             [InlineKeyboardButton(text=subscribe_label, url="https://t.me/bitcoinpizzafest")],
             [InlineKeyboardButton(text=check_label, callback_data="check_subscription")],
+        ]
+    )
+
+
+def giveaway_menu_keyboard(lang: str) -> ReplyKeyboardMarkup:
+    return ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text=TEXTS[lang]["giveaway_btn"])]],
+        resize_keyboard=True,
+    )
+
+
+def giveaway_participate_keyboard(lang: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text=TEXTS[lang]["participate_btn"], url=GIVEAWAY_URL)]
         ]
     )
 
