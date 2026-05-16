@@ -3,7 +3,7 @@ from aiogram import Router, F
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
-from aiogram.types import Message, CallbackQuery
+from aiogram.types import LinkPreviewOptions, Message, CallbackQuery
 
 import db
 from texts import TEXTS, LANGUAGE_BUTTONS
@@ -110,7 +110,11 @@ async def step_phone(message: Message, state: FSMContext) -> None:
 
     logger.info(f"New registration: {message.from_user.id} ({lang})")
 
-    await message.answer(TEXTS[lang]["success"], reply_markup=remove_keyboard())
+    await message.answer(
+        TEXTS[lang]["success"],
+        reply_markup=remove_keyboard(),
+        link_preview_options=LinkPreviewOptions(is_disabled=True),
+    )
     await state.clear()
 
 
