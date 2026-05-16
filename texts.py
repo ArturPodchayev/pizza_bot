@@ -21,10 +21,10 @@ TEXTS = {
             "Что нужно сделать для участия?\n"
             "🧡 Нажать кнопку «Участвую» под этим постом\n\n"
             "Лайфхак для тех, кто хочет повысить шансы на победу 👇\n"
-            "Кидайте бусты каналу и приглашайте друзей по своей реферальной ссылке из бота, чтобы повысить шансы на победу 🔥\n\n"
+            "Кидайте <b><a href=\"https://t.me/boost/bitcoinpizzafest\">бусты</a></b> каналу и приглашайте друзей по своей реферальной ссылке из бота, чтобы повысить шансы на победу 🔥\n\n"
             "В последний день Bitcoin Pizza Fest 2026 — 24 мая в 20:00 — бот автоматически определит одного победителя розыгрыша 🎉\n\n"
             "📣 Результаты розыгрыша будут опубликованы в Telegram-канале @bitcoinpizzafest.\n\n"
-            "* Авиабилеты распространяются на любые доступные направления и рейсы, представленные на официальном сайте Centrum Air на момент оформления поездки."
+            "* Авиабилеты распространяются на любые доступные направления и рейсы, представленные на официальном сайте <b><a href=\"https://centrum-air.com/\">Centrum Air</a></b> на момент оформления поездки."
         ),
         "success": (
             "🔥 Спасибо! Вы успешно зарегистрированы на Bitcoin Pizza Fest 2026.\n\n"
@@ -37,7 +37,6 @@ TEXTS = {
             "— и множество других подарков и бонусов\n\n"
             "📅 Даты: 22, 23 и 24 мая\n"
             "🕓 Время: 17:00–22:00\n"
-            "📍 <a href=\"https://yandex.uz/maps/-/CPWhfWn2\">Ташкент, ул. Узбекистон Овози</a>\n"
             "🎟 Вход свободный\n\n"
             "❗️Если хотите уйти с фестиваля не только с яркими эмоциями и тёплыми воспоминаниями, но и с памятными призами — не забудьте взять с собой документ, удостоверяющий личность (паспорт или ID-карту).\n\n"
             "📣 Следите за всеми анонсами фестиваля в Telegram — @bitcoinpizzafest и в Instagram — <a href=\"https://www.instagram.com/bitcoinpizzafest\">@bitcoinpizzafest</a>\n\n"
@@ -66,10 +65,10 @@ TEXTS = {
             "Ishtirok etish uchun nima qilish kerak?\n"
             "🧡 Shu post ostidagi \"Ishtirok etaman\" tugmasini bosish\n\n"
             "Yutish imkoniyatini oshirmoqchi bo'lganlar uchun kichik maslahat 👇\n"
-            "Kanalga boost yuboring va botdagi referal havolangiz orqali do'stlaringizni taklif qiling — bu yutish imkoniyatini oshiradi 🔥\n\n"
+            "Kanalga <b><a href=\"https://t.me/boost/bitcoinpizzafest\">boost yuboring</a></b> va botdagi referal havolangiz orqali do'stlaringizni taklif qiling — bu yutish imkoniyatini oshiradi 🔥\n\n"
             "Bitcoin Pizza Fest 2026'ning so'nggi kuni — 24-may kuni soat 20:00 da bot avtomatik tarzda 1 nafar g'olibni aniqlaydi 🎉\n\n"
             "📣 Tanlov natijalari @bitcoinpizzafest Telegram-kanalida e'lon qilinadi.\n\n"
-            "* Aviachiptalar sayohatni rasmiylashtirish vaqtida Centrum Air rasmiy saytida mavjud bo'lgan barcha yo'nalish va parvozlarga amal qiladi."
+            "* Aviachiptalar sayohatni rasmiylashtirish vaqtida <b><a href=\"https://centrum-air.com/\">Centrum Air</a></b> rasmiy saytida mavjud bo'lgan barcha yo'nalish va parvozlarga amal qiladi."
         ),
         "success": (
             "🔥 Rahmat! Siz Bitcoin Pizza Fest 2026 festivalidan muvaffaqiyatli ro'yxatdan o'tdingiz.\n\n"
@@ -82,7 +81,6 @@ TEXTS = {
             "— va yana ko'plab sovg'alar hamda bonuslar\n\n"
             "📅 Sanalar: 22, 23 va 24-may\n"
             "🕓 Vaqt: 17:00–22:00\n"
-            "📍 <a href=\"https://yandex.uz/maps/-/CPWhfWn2\">Toshkent, O'zbekiston Ovozi ko'chasi</a>\n"
             "🎟 Kirish bepul\n\n"
             "❗️Agar festivaldan nafaqat yorqin kayfiyat va iliq xotiralar, balki esdalik sovrinlari bilan ham ketmoqchi bo'lsangiz — shaxsingizni tasdiqlovchi hujjatni (pasport yoki ID-karta) olib kelishni unutmang.\n\n"
             "📣 Festivalning barcha yangiliklarini Telegram'da — @bitcoinpizzafest va Instagram'da — <a href=\"https://www.instagram.com/bitcoinpizzafest\">@bitcoinpizzafest</a> sahifalarida kuzatib boring.\n\n"
@@ -111,10 +109,10 @@ TEXTS = {
             "What do you need to do to participate?\n"
             "🧡 Tap the \"Participate\" button under this post\n\n"
             "A little lifehack for those who want to boost their chances of winning 👇\n"
-            "Send boosts to the channel and invite friends using your referral link from the bot to increase your chances of winning 🔥\n\n"
+            "Send <b><a href=\"https://t.me/boost/bitcoinpizzafest\">boosts</a></b> to the channel and invite friends using your referral link from the bot to increase your chances of winning 🔥\n\n"
             "On the final day of Bitcoin Pizza Fest 2026 — May 24 at 20:00 — the bot will automatically select one giveaway winner 🎉\n\n"
             "📣 The giveaway results will be announced on the @bitcoinpizzafest Telegram channel.\n\n"
-            "* The airline tickets are valid for any available destinations and flights listed on the official Centrum Air website at the time of booking."
+            "* The airline tickets are valid for any available destinations and flights listed on the official <b><a href=\"https://centrum-air.com/\">Centrum Air</a></b> website at the time of booking."
         ),
         "success": (
             "🔥 Thank you! You have successfully registered for Bitcoin Pizza Fest 2026.\n\n"
@@ -127,7 +125,6 @@ TEXTS = {
             "— and many more gifts and bonuses\n\n"
             "📅 Dates: May 22, 23, and 24\n"
             "🕓 Time: 17:00–22:00\n"
-            "📍 <a href=\"https://yandex.uz/maps/-/CPWhfWn2\">Tashkent, Uzbekistan Ovozi Street</a>\n"
             "🎟 Free entry\n\n"
             "❗️If you want to leave the festival not only with great memories and amazing vibes, but also with memorable prizes — don't forget to bring an identification document (passport or ID card).\n\n"
             "📣 Follow all festival updates on Telegram — @bitcoinpizzafest and Instagram — <a href=\"https://www.instagram.com/bitcoinpizzafest\">@bitcoinpizzafest</a>\n\n"
