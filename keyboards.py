@@ -7,7 +7,7 @@ from aiogram.types import (
 )
 from texts import TEXTS
 
-GIVEAWAY_URL = "https://t.me/randombeast_bot/devapp?startapp=join_yh3r2au7nhcb8sy&startApp=join_yh3r2au7nhcb8sy"
+GIVEAWAY_URL = "https://t.me/randombeast_bot/devapp?startapp=join_vPSlRyd1GG&startApp=join_vPSlRyd1GG"
 
 
 def language_keyboard() -> ReplyKeyboardMarkup:

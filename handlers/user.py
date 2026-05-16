@@ -131,11 +131,8 @@ async def cb_check_subscription(callback: CallbackQuery, state: FSMContext, bot:
         await callback.message.edit_reply_markup(reply_markup=None)
         await callback.message.answer(
             TEXTS[lang]["success"],
-            link_preview_options=LinkPreviewOptions(is_disabled=True),
-        )
-        await callback.message.answer(
-            TEXTS[lang]["giveaway_btn"],
             reply_markup=giveaway_menu_keyboard(lang),
+            link_preview_options=LinkPreviewOptions(is_disabled=True),
         )
         await state.clear()
         await callback.answer()
