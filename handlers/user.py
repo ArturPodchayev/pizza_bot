@@ -1,5 +1,5 @@
 import logging
-from aiogram import Router, F
+from aiogram import Bot, Router, F
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
@@ -7,7 +7,7 @@ from aiogram.types import LinkPreviewOptions, Message, CallbackQuery
 
 import db
 from texts import TEXTS, LANGUAGE_BUTTONS
-from keyboards import language_keyboard, phone_keyboard, update_keyboard, remove_keyboard
+from keyboards import language_keyboard, phone_keyboard, update_keyboard, subscribe_keyboard, remove_keyboard
 
 router = Router()
 logger = logging.getLogger(__name__)
@@ -111,11 +111,28 @@ async def step_phone(message: Message, state: FSMContext) -> None:
     logger.info(f"New registration: {message.from_user.id} ({lang})")
 
     await message.answer(
-        TEXTS[lang]["success"],
-        reply_markup=remove_keyboard(),
-        link_preview_options=LinkPreviewOptions(is_disabled=True),
+        TEXTS[lang]["subscribe_prompt"],
+        reply_markup=subscribe_keyboard(lang),
     )
-    await state.clear()
+
+
+@router.callback_query(F.data == "check_subscription")
+async def cb_check_subscription(callback: CallbackQuery, state: FSMContext, bot: Bot) -> None:
+    data = await state.get_data()
+    lang = data.get("language", "ru")
+
+    member = await bot.get_chat_member(chat_id="@bitcoinpizzafest", user_id=callback.from_user.id)
+
+    if member.status in ("member", "administrator", "creator"):
+        await callback.message.edit_reply_markup(reply_markup=None)
+        await callback.message.answer(
+            TEXTS[lang]["success"],
+            link_preview_options=LinkPreviewOptions(is_disabled=True),
+        )
+        await state.clear()
+        await callback.answer()
+    else:
+        await callback.answer(TEXTS[lang]["not_subscribed"], show_alert=True)
 
 
 @router.message(Register.phone)

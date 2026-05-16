@@ -10,6 +10,8 @@ TEXTS = {
         "update_yes": "✅ Да, обновить",
         "update_no": "❌ Нет, оставить",
         "cancelled": "Окей, ваши данные сохранены без изменений.",
+        "subscribe_prompt": "📣 Подпишитесь на Telegram-канал фестиваля — @bitcoinpizzafest",
+        "not_subscribed": "Похоже, вы ещё не подписались на канал. Подпишитесь и нажмите «Проверить подписку ✅» ещё раз.",
         "success": (
             "🔥 Спасибо! Вы успешно зарегистрированы на Bitcoin Pizza Fest 2026.\n\n"
             "🍕 Первый в Ташкенте уличный фестиваль, где пиццу можно купить за Bitcoin.\n\n"
@@ -39,6 +41,8 @@ TEXTS = {
         "update_yes": "✅ Ha, yangilash",
         "update_no": "❌ Yo'q, qoldirish",
         "cancelled": "Okay, ma'lumotlaringiz o'zgarishsiz saqlandi.",
+        "subscribe_prompt": "📣 Festivalning Telegram-kanaliga obuna bo'ling — @bitcoinpizzafest",
+        "not_subscribed": "Aftidan, siz hali kanalga obuna bo'lmagansiz. Obuna bo'ling va «Obunani tekshirish ✅» tugmasini yana bir marta bosing.",
         "success": (
             "🔥 Rahmat! Siz Bitcoin Pizza Fest 2026 festivalidan muvaffaqiyatli ro'yxatdan o'tdingiz.\n\n"
             "🍕 Bitcoin orqali pitsa xarid qilish mumkin bo'lgan Toshkentdagi birinchi ko'cha festivali.\n\n"
@@ -68,6 +72,8 @@ TEXTS = {
         "update_yes": "✅ Yes, update",
         "update_no": "❌ No, keep it",
         "cancelled": "Okay, your data remains unchanged.",
+        "subscribe_prompt": "📣 Subscribe to the festival Telegram channel — @bitcoinpizzafest",
+        "not_subscribed": "It looks like you haven't subscribed to the channel yet. Please subscribe and tap \"Check subscription ✅\" again.",
         "success": (
             "🔥 Thank you! You have successfully registered for Bitcoin Pizza Fest 2026.\n\n"
             "🍕 The first street festival in Tashkent where you can buy pizza with Bitcoin.\n\n"

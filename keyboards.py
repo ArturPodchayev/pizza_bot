@@ -41,5 +41,20 @@ def update_keyboard(lang: str) -> InlineKeyboardMarkup:
     )
 
 
+def subscribe_keyboard(lang: str) -> InlineKeyboardMarkup:
+    labels = {
+        "ru": ("Подписаться 🍕", "Проверить подписку ✅"),
+        "uz": ("Obuna bo'lish 🍕", "Obunani tekshirish ✅"),
+        "en": ("Subscribe 🍕", "Check subscription ✅"),
+    }
+    subscribe_label, check_label = labels.get(lang, labels["ru"])
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text=subscribe_label, url="https://t.me/bitcoinpizzafest")],
+            [InlineKeyboardButton(text=check_label, callback_data="check_subscription")],
+        ]
+    )
+
+
 def remove_keyboard() -> ReplyKeyboardRemove:
     return ReplyKeyboardRemove()
