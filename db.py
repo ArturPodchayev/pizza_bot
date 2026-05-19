@@ -34,8 +34,12 @@ async def _create_tables() -> None:
                 full_name     TEXT,
                 phone         TEXT,
                 registered_at TEXT,
-                is_active     SMALLINT DEFAULT 1
+                is_active     SMALLINT DEFAULT 1,
+                ref_code      TEXT DEFAULT NULL
             )
+        """)
+        await conn.execute("""
+            ALTER TABLE users ADD COLUMN IF NOT EXISTS ref_code TEXT DEFAULT NULL
         """)
 
 
@@ -58,21 +62,23 @@ async def upsert_user(
     language: str,
     full_name: str,
     phone: str,
+    ref_code: str | None = None,
 ) -> None:
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     await pool.execute(
         """
-        INSERT INTO users (telegram_id, username, language, full_name, phone, registered_at)
-        VALUES ($1, $2, $3, $4, $5, $6)
+        INSERT INTO users (telegram_id, username, language, full_name, phone, registered_at, ref_code)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
         ON CONFLICT (telegram_id) DO UPDATE SET
             username      = EXCLUDED.username,
             language      = EXCLUDED.language,
             full_name     = EXCLUDED.full_name,
             phone         = EXCLUDED.phone,
             registered_at = EXCLUDED.registered_at,
-            is_active     = 1
+            is_active     = 1,
+            ref_code      = COALESCE(EXCLUDED.ref_code, users.ref_code)
         """,
-        telegram_id, username, language, full_name, phone, now,
+        telegram_id, username, language, full_name, phone, now, ref_code,
     )
     logger.info(f"User upserted: {telegram_id}")
 
@@ -94,4 +100,22 @@ async def get_users_count() -> int:
 async def deactivate_user(telegram_id: int) -> None:
     await pool.execute(
         "UPDATE users SET is_active = 0 WHERE telegram_id = $1", telegram_id
+    )
+
+
+async def get_ref_stats() -> list[asyncpg.Record]:
+    return await pool.fetch(
+        """
+        SELECT ref_code, COUNT(*) AS cnt
+        FROM users
+        WHERE ref_code IS NOT NULL AND is_active = 1
+        GROUP BY ref_code
+        ORDER BY cnt DESC
+        """
+    )
+
+
+async def get_direct_users_count() -> int:
+    return await pool.fetchval(
+        "SELECT COUNT(*) FROM users WHERE ref_code IS NULL AND is_active = 1"
     )

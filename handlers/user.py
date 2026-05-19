@@ -26,6 +26,11 @@ class Register(StatesGroup):
 @router.message(CommandStart())
 async def cmd_start(message: Message, state: FSMContext) -> None:
     await state.clear()
+
+    args = message.text.split(maxsplit=1)
+    ref_code = args[1].strip() if len(args) > 1 else None
+    await state.update_data(ref_code=ref_code)
+
     user = await db.get_user(message.from_user.id)
 
     if user:
@@ -110,6 +115,7 @@ async def step_phone(message: Message, state: FSMContext) -> None:
         language=lang,
         full_name=data["full_name"],
         phone=phone,
+        ref_code=data.get("ref_code"),
     )
 
     logger.info(f"New registration: {message.from_user.id} ({lang})")

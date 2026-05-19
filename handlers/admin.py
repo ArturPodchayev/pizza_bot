@@ -54,7 +54,7 @@ def make_excel(users: list) -> BytesIO:
     ws = wb.active
     ws.title = "Participants"
 
-    headers = ["#", "Telegram ID", "Username", "Language", "Full Name", "Phone", "Registered At"]
+    headers = ["#", "Telegram ID", "Username", "Language", "Full Name", "Phone", "Registered At", "Ref Code"]
     header_fill = PatternFill("solid", fgColor="F7931A")  # Bitcoin orange
     header_font = Font(bold=True, color="FFFFFF")
 
@@ -71,6 +71,7 @@ def make_excel(users: list) -> BytesIO:
     ws.column_dimensions["E"].width = 30
     ws.column_dimensions["F"].width = 20
     ws.column_dimensions["G"].width = 20
+    ws.column_dimensions["H"].width = 20
 
     for i, u in enumerate(users, 1):
         ws.append([
@@ -81,6 +82,7 @@ def make_excel(users: list) -> BytesIO:
             u["full_name"],
             u["phone"],
             u["registered_at"],
+            u["ref_code"] or "—",
         ])
 
     buf = BytesIO()
@@ -108,7 +110,8 @@ async def cmd_admin(message: Message) -> None:
         f"<b>Команды:</b>\n"
         f"/export — скачать базу в Excel\n"
         f"/broadcast — сделать рассылку\n"
-        f"/users — количество участников",
+        f"/users — количество участников\n"
+        f"/refs — реферальная статистика",
         parse_mode="HTML",
     )
 
@@ -119,6 +122,22 @@ async def cmd_users(message: Message) -> None:
         return
     count = await db.get_users_count()
     await message.answer(f"👥 Всего участников: <b>{count}</b>", parse_mode="HTML")
+
+
+@router.message(Command("refs"))
+async def cmd_refs(message: Message) -> None:
+    if not is_admin(message.from_user.id):
+        return
+
+    rows = await db.get_ref_stats()
+    direct_count = await db.get_direct_users_count()
+
+    lines = ["📊 <b>Реферальная статистика:</b>\n"]
+    for row in rows:
+        lines.append(f"{row['ref_code']} — {row['cnt']} чел.")
+    lines.append(f"(прямые) — {direct_count} чел.")
+
+    await message.answer("\n".join(lines), parse_mode="HTML")
 
 
 @router.message(Command("export"))
