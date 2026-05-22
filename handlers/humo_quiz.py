@@ -37,12 +37,13 @@ def _answer_keyboard() -> InlineKeyboardMarkup:
 
 def _question_text(lang: str, q_num: int) -> str:
     q = HUMO_QUESTIONS[q_num - 1]
+    q_lang = lang if lang in q["question"] else "ru"
     header = HUMO_TEXTS[lang]["question_header"].format(n=q_num)
     opts = "\n".join(
-        f"{letter}) {q['options'][letter][lang]}"
+        f"{letter}) {q['options'][letter][q_lang]}"
         for letter in ("A", "B", "C", "D")
     )
-    return f"<b>{header}</b>\n\n{q['question'][lang]}\n\n{opts}"
+    return f"<b>{header}</b>\n\n{q['question'][q_lang]}\n\n{opts}"
 
 
 @router.message(F.text.in_(HUMO_BTN_TEXTS), StateFilter(None))
@@ -53,6 +54,7 @@ async def handle_humo_btn(message: Message, state: FSMContext) -> None:
         coming_soon = {
             "ru": "🔜 Тест финансовой грамотности HUMO скоро откроется. Следите за анонсами!",
             "uz": "🔜 HUMO moliyaviy savodxonlik testi tez orada ochiladi. E'lonlarni kuzatib boring!",
+            "en": "🔜 The HUMO Financial Literacy Test is coming soon. Stay tuned for announcements!",
         }
         await message.answer(coming_soon.get(lang, coming_soon["ru"]))
         return
@@ -102,6 +104,7 @@ async def cb_answer(callback: CallbackQuery, state: FSMContext) -> None:
     chosen = callback.data[3:]  # "qa_A" -> "A"
     q = HUMO_QUESTIONS[current_q - 1]
     correct = q["correct"]
+    q_lang = lang if lang in q["question"] else "ru"
     is_correct = chosen == correct
 
     answers[str(current_q)] = chosen
@@ -113,12 +116,12 @@ async def cb_answer(callback: CallbackQuery, state: FSMContext) -> None:
     await callback.answer()
 
     if is_correct:
-        feedback = f"✅ <b>{HUMO_TEXTS[lang]['correct']}</b>\n\n<i>{q['explanation'][lang]}</i>"
+        feedback = f"✅ <b>{HUMO_TEXTS[lang]['correct']}</b>\n\n<i>{q['explanation'][q_lang]}</i>"
     else:
-        correct_text = q["options"][correct][lang]
+        correct_text = q["options"][correct][q_lang]
         feedback = (
             f"❌ <b>{HUMO_TEXTS[lang]['wrong_prefix']} {correct})</b> {correct_text}\n\n"
-            f"<i>{q['explanation'][lang]}</i>"
+            f"<i>{q['explanation'][q_lang]}</i>"
         )
     await callback.message.answer(feedback)
 

@@ -13,7 +13,7 @@ TEXTS = {
         "subscribe_prompt": "📣 Подпишитесь на Telegram-канал фестиваля — @bitcoinpizzafest",
         "not_subscribed": "Похоже, вы ещё не подписались на канал. Подпишитесь и нажмите «Проверить подписку ✅» ещё раз.",
         "giveaway_btn": "✈️ Розыгрыш авиабилетов",
-        "humo_quiz_btn": "HUMO: тест финансовой грамотности",
+        "humo_quiz_btn": "🧠 HUMO: Тест финансовой грамотности",
         "participate_btn": "Участвую",
         "giveaway_text": (
             "<b>🧳 Пора собирать чемоданы!</b>\n\n"
@@ -58,7 +58,7 @@ TEXTS = {
         "subscribe_prompt": "📣 Festivalning Telegram-kanaliga obuna bo'ling — @bitcoinpizzafest",
         "not_subscribed": "Aftidan, siz hali kanalga obuna bo'lmagansiz. Obuna bo'ling va «Obunani tekshirish ✅» tugmasini yana bir marta bosing.",
         "giveaway_btn": "✈️ Aviachiptalar tanlovi",
-        "humo_quiz_btn": "HUMO: moliyaviy savodxonlik testi",
+        "humo_quiz_btn": "🧠 HUMO: Moliyaviy savodxonlik testi",
         "participate_btn": "Ishtirok etaman",
         "giveaway_text": (
             "<b>🧳 Chamadonlarni yig'ish vaqti keldi!</b>\n\n"
@@ -103,7 +103,7 @@ TEXTS = {
         "subscribe_prompt": "📣 Subscribe to the festival Telegram channel — @bitcoinpizzafest",
         "not_subscribed": "It looks like you haven't subscribed to the channel yet. Please subscribe and tap \"Check subscription ✅\" again.",
         "giveaway_btn": "✈️ Airline Tickets Giveaway",
-        "humo_quiz_btn": "HUMO: тест финансовой грамотности",
+        "humo_quiz_btn": "🧠 HUMO: Financial Literacy Test",
         "participate_btn": "Participate",
         "giveaway_text": (
             "<b>🧳 Time to pack your bags!</b>\n\n"
@@ -237,7 +237,7 @@ HUMO_QUESTIONS = [
         "id": 4,
         "question": {
             "ru": "Вы решили накопить на мощный ноутбук и спрятали 10 000 000 сумов наличными в домашний сейф. Что произойдёт с этими деньгами ровно через год?",
-            "uz": "Siz kuchli noutbuk olish uchun 10 000 000 so'mni uy seyfida naqd pul ko'rinishida saqladingiz. Bir yildan keyin bu pul bilan nima bo'ladi?",
+            "uz": "Siz kuchli noutbuk olish uchun 10 000 000 so'mni uy seyfida yoki \"yostiq ostida\" naqd pul ko'rinishida saqladingiz. Bir yildan keyin bu pul bilan nima bo'ladi?",
         },
         "options": {
             "A": {
@@ -260,7 +260,7 @@ HUMO_QUESTIONS = [
         "correct": "C",
         "explanation": {
             "ru": "Это ловушка «номинальной иллюзии»: цифры на бумажках остаются теми же, но реальная ценность денег падает каждый день. Хранить наличные — значит гарантированно терять их часть.",
-            "uz": "Bu — \"nominal illyuziya\" tuzog'i. Qog'ozdagi raqamlar o'zgarmaydi, ammo pulning haqiqiy qiymati pasayib boradi. Naqd pulni shunchaki saqlash — mablag'ning bir qismini yo'qotish degani.",
+            "uz": "Bu — \"nominal illyuziya\" tuzog'i. Qog'ozdagi raqamlar o'zgarmaydi, ammo pulning haqiqiy qiymati pasayib boradi. Naqd pulni shunchaki saqlash — mablag'ning bir qismini yo'qotish degani. Kapital qadrsizlanmasligi uchun uni zamonaviy himoya vositalariga yo'naltirish kerak.",
         },
     },
     {
@@ -457,8 +457,8 @@ HUMO_TEXTS = {
         "question_header": "Вопрос {n}/10",
         "correct": "Правильно!",
         "wrong_prefix": "Неправильно. Правильный ответ:",
-        "finished_prompt": "🎯 Тест завершён!\n\nХотите узнать результат?",
-        "show_result_btn": "Узнать результат 📊",
+        "finished_prompt": "<b>🎯 Тест завершён!\n\nХотите узнать результат?</b>",
+        "show_result_btn": "Да, показать результат 📊",
         "success": (
             "🎉 <b>Отличный результат!</b>\n\n"
             "Вы правильно ответили на <b>[X] из 10</b> вопросов.\n\n"
@@ -481,33 +481,65 @@ HUMO_TEXTS = {
     "uz": {
         "intro": (
             "🧠 <b>HUMO: Moliyaviy savodxonlik testi</b>\n\n"
-            "Moliya va kripto-aktivlar sohasidagi bilimlaringizni sinab ko'ring!\n\n"
-            "10 ta savol. 8 ta yoki undan ko'p to'g'ri javob bersangiz — HUMO to'lov uzugi qur'asiga kirasiz 💍\n\n"
+            "Moliyaviy bilimlaringiz va kripto-aktivlar bo'yicha tushunchalaringizni sinab ko'ring!\n\n"
+            "10 ta savol. Kamida 8 tasiga to'g'ri javob bersangiz — HUMO to'lov uzugi yutug'i ishtirokchisiga aylanasiz 💍\n\n"
             "Tayyormisiz? Quyidagi tugmani bosing!"
         ),
         "participate_btn": "Ishtirok etish ✅",
-        "question_header": "{n}/10-savol",
+        "question_header": "Savol {n}/10",
         "correct": "To'g'ri!",
         "wrong_prefix": "Noto'g'ri. To'g'ri javob:",
-        "finished_prompt": "🎯 Test yakunlandi!\n\nNatijani bilmoqchimisiz?",
+        "finished_prompt": "<b>🎯 Test yakunlandi!\n\nNatijangizni bilishni xohlaysizmi?</b>",
         "show_result_btn": "Natijani ko'rish 📊",
         "success": (
             "🎉 <b>Ajoyib natija!</b>\n\n"
-            "Siz 10 ta savoldan <b>[X] tasiga</b> to'g'ri javob berdingiz.\n\n"
-            "Tabriklaymiz — siz HUMO to'lov uzugi qur'asiga ishtirokchi bo'lasiz 💍\n\n"
-            "🏆 G'olibni <b>24-may kuni soat 21:00</b> da Bitcoin Pizza Fest 2026 sahnasida tasodifiy tarzda aniqlaymiz.\n\n"
-            "Omad tilaymiz — balki aynan siz festivaldan HUMO'ning texnologik sovriniga ega bo'lib ketarsiz 🔥"
+            "Siz <b>10 ta savoldan [X] tasiga</b> to'g'ri javob berdingiz.\n\n"
+            "Tabriklaymiz — siz HUMO to'lov uzugi yutug'i ishtirokchisiga aylandingiz 💍\n\n"
+            "🏆 G'olib <b>24-may kuni soat 21:00 da</b> Bitcoin Pizza Fest 2026 sahnasida tasodifiy tarzda aniqlanadi.\n\n"
+            "Omad tilaymiz — balki festivaldan HUMO'ning zamonaviy sovg'asi bilan aynan siz qaytarsiz 🔥"
         ),
         "fail": (
-            "Ishtirok etganingiz uchun rahmat 🙌\n\n"
-            "Siz 10 ta savoldan <b>[X] tasiga</b> to'g'ri javob berdingiz.\n\n"
-            "Afsuski, HUMO to'lov uzugi qur'asida qatnashish uchun kamida 8 ta to'g'ri javob kerak.\n\n"
-            "Ammo xafa bo'lmang — Bitcoin Pizza Fest 2026'da festival hamkorlaridan boshqa qur'alar, aktivitilar va sovrinlar ham sizni kutmoqda 🔥"
+            "Ishtirokingiz uchun rahmat 🙌\n\n"
+            "Siz <b>10 ta savoldan [X] tasiga</b> to'g'ri javob berdingiz.\n\n"
+            "Afsuski, HUMO to'lov uzugi yutug'ida ishtirok etish uchun kamida 8 ta to'g'ri javob to'plash kerak.\n\n"
+            "Lekin xafa bo'lmang — Bitcoin Pizza Fest 2026'da sizni festival hamkorlaridan boshqa yutuqli o'yinlar va sovg'alar kutmoqda 🔥"
         ),
         "already_completed": (
-            "Siz HUMO moliyaviy savodxonlik testini allaqachon topshirdingiz.\n\n"
-            "Natijangiz: <b>[X] ta</b> to'g'ri javob (10 tadan).\n\n"
-            "Agar siz 8 ta yoki undan ko'p to'g'ri javob bergan bo'lsangiz — siz allaqachon HUMO to'lov uzugi qur'asida ishtirok etyapsiz 💍"
+            "Siz HUMO moliyaviy savodxonlik testini allaqachon topshirgansiz.\n\n"
+            "Natijangiz: <b>10 ta savoldan [X] tasi</b> to'g'ri javob.\n\n"
+            "Agar siz 8 ta yoki undan ko'p to'g'ri javob to'plagan bo'lsangiz — HUMO to'lov uzugi yutug'ida avtomatik tarzda ishtirok etasiz 💍"
+        ),
+    },
+    "en": {
+        "intro": (
+            "🧠 <b>HUMO: Financial Literacy Test</b>\n\n"
+            "Test your knowledge of finance and crypto assets!\n\n"
+            "10 questions. If you answer 8 or more correctly, you will enter the giveaway for a HUMO payment ring 💍\n\n"
+            "Ready? Press the button below!"
+        ),
+        "participate_btn": "Participate ✅",
+        "question_header": "Question {n}/10",
+        "correct": "Correct!",
+        "wrong_prefix": "Incorrect. Correct answer:",
+        "finished_prompt": "<b>🎯 Test completed!\n\nWant to see your result?</b>",
+        "show_result_btn": "View result 📊",
+        "success": (
+            "🎉 <b>Excellent result!</b>\n\n"
+            "You answered <b>[X] out of 10 questions</b> correctly.\n\n"
+            "Congratulations — you are now a participant in the HUMO payment ring giveaway 💍\n\n"
+            "🏆 The winner will be selected randomly on <b>May 24 at 21:00</b> right on stage at Bitcoin Pizza Fest 2026.\n\n"
+            "Good luck — it might be you who leaves the festival with a high-tech prize from HUMO 🔥"
+        ),
+        "fail": (
+            "Thank you for participating 🙌\n\n"
+            "You answered <b>[X] out of 10</b> questions correctly.\n\n"
+            "Unfortunately, to qualify for the HUMO payment ring giveaway, you need at least 8 correct answers.\n\n"
+            "But don't worry — Bitcoin Pizza Fest 2026 still has many other giveaways, activities, and partner prizes waiting for you 🔥"
+        ),
+        "already_completed": (
+            "You have already completed the HUMO financial literacy test.\n\n"
+            "Your result: <b>[X] out of 10</b> correct answers.\n\n"
+            "If you scored 8 or more correct answers — you are already entered into the HUMO payment ring giveaway 💍"
         ),
     },
 }
