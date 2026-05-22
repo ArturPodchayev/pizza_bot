@@ -1,5 +1,6 @@
 import asyncio
 import asyncpg
+import json
 import logging
 from datetime import datetime
 
@@ -40,6 +41,16 @@ async def _create_tables() -> None:
         """)
         await conn.execute("""
             ALTER TABLE users ADD COLUMN IF NOT EXISTS ref_code TEXT DEFAULT NULL
+        """)
+        await conn.execute("""
+            CREATE TABLE IF NOT EXISTS humo_quiz_results (
+                id           SERIAL PRIMARY KEY,
+                user_id      BIGINT REFERENCES users(telegram_id) ON DELETE CASCADE,
+                score        INT NOT NULL,
+                answers      JSONB NOT NULL,
+                qualified    BOOL NOT NULL DEFAULT FALSE,
+                completed_at TIMESTAMP NOT NULL DEFAULT NOW()
+            )
         """)
 
 
@@ -118,4 +129,34 @@ async def get_ref_stats() -> list[asyncpg.Record]:
 async def get_direct_users_count() -> int:
     return await pool.fetchval(
         "SELECT COUNT(*) FROM users WHERE ref_code IS NULL AND is_active = 1"
+    )
+
+
+async def save_quiz_result(user_id: int, score: int, answers: dict) -> None:
+    qualified = score >= 8
+    await pool.execute(
+        """
+        INSERT INTO humo_quiz_results (user_id, score, answers, qualified, completed_at)
+        VALUES ($1, $2, $3::jsonb, $4, NOW())
+        """,
+        user_id, score, json.dumps(answers), qualified,
+    )
+
+
+async def get_quiz_result(user_id: int) -> asyncpg.Record | None:
+    return await pool.fetchrow(
+        "SELECT * FROM humo_quiz_results WHERE user_id = $1", user_id
+    )
+
+
+async def get_qualified_users() -> list[asyncpg.Record]:
+    return await pool.fetch(
+        """
+        SELECT u.telegram_id, u.username, u.full_name, u.phone,
+               q.score, q.completed_at
+        FROM humo_quiz_results q
+        JOIN users u ON u.telegram_id = q.user_id
+        WHERE q.qualified = TRUE
+        ORDER BY q.completed_at
+        """
     )

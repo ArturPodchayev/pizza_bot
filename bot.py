@@ -8,7 +8,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 
 import db
 from config import BOT_TOKEN, DATABASE_URL
-from handlers import user, admin
+from handlers import user, admin, humo_quiz
 
 logging.basicConfig(
     level=logging.INFO,
@@ -28,6 +28,7 @@ async def main() -> None:
 
     dp.include_router(admin.router)
     dp.include_router(user.router)
+    dp.include_router(humo_quiz.router)
 
     logger.info("Bot started")
     try:

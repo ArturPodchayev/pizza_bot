@@ -111,7 +111,8 @@ async def cmd_admin(message: Message) -> None:
         f"/export — скачать базу в Excel\n"
         f"/broadcast — сделать рассылку\n"
         f"/users — количество участников\n"
-        f"/refs — реферальная статистика",
+        f"/refs — реферальная статистика\n"
+        f"/export_humo — база квалифицированных HUMO",
         parse_mode="HTML",
     )
 
@@ -122,6 +123,48 @@ async def cmd_users(message: Message) -> None:
         return
     count = await db.get_users_count()
     await message.answer(f"👥 Всего участников: <b>{count}</b>", parse_mode="HTML")
+
+
+def make_humo_excel(users: list) -> BytesIO:
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "HUMO Qualified"
+
+    headers = ["#", "Telegram ID", "Username", "Full Name", "Phone", "Score", "Completed At", "Status"]
+    header_fill = PatternFill("solid", fgColor="F7931A")
+    header_font = Font(bold=True, color="FFFFFF")
+
+    for col, h in enumerate(headers, 1):
+        cell = ws.cell(row=1, column=col, value=h)
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(horizontal="center")
+
+    ws.column_dimensions["A"].width = 5
+    ws.column_dimensions["B"].width = 15
+    ws.column_dimensions["C"].width = 20
+    ws.column_dimensions["D"].width = 30
+    ws.column_dimensions["E"].width = 20
+    ws.column_dimensions["F"].width = 8
+    ws.column_dimensions["G"].width = 22
+    ws.column_dimensions["H"].width = 12
+
+    for i, u in enumerate(users, 1):
+        ws.append([
+            i,
+            u["telegram_id"],
+            u["username"] or "—",
+            u["full_name"],
+            u["phone"],
+            u["score"],
+            str(u["completed_at"]),
+            "qualified",
+        ])
+
+    buf = BytesIO()
+    wb.save(buf)
+    buf.seek(0)
+    return buf
 
 
 @router.message(Command("refs"))
@@ -157,6 +200,26 @@ async def cmd_export(message: Message) -> None:
     await message.answer_document(
         file,
         caption=f"📥 База участников\n👥 Всего: {len(users)}",
+    )
+
+
+@router.message(Command("export_humo"))
+async def cmd_export_humo(message: Message) -> None:
+    if not is_admin(message.from_user.id):
+        return
+
+    users = await db.get_qualified_users()
+    if not users:
+        await message.answer("Нет квалифицированных участников HUMO.")
+        return
+
+    buf = make_humo_excel(users)
+    filename = f"humo_qualified_{datetime.now().strftime('%Y%m%d_%H%M')}.xlsx"
+    file = BufferedInputFile(buf.read(), filename=filename)
+
+    await message.answer_document(
+        file,
+        caption=f"📥 HUMO: квалифицированные участники\n✅ Всего: {len(users)}",
     )
 
 

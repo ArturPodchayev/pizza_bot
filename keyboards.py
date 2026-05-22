@@ -60,7 +60,10 @@ def subscribe_keyboard(lang: str) -> InlineKeyboardMarkup:
 
 def giveaway_menu_keyboard(lang: str) -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text=TEXTS[lang]["giveaway_btn"])]],
+        keyboard=[
+            [KeyboardButton(text=TEXTS[lang]["giveaway_btn"])],
+            [KeyboardButton(text=TEXTS[lang]["humo_quiz_btn"])],
+        ],
         resize_keyboard=True,
     )
 

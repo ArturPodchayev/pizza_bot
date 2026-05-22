@@ -13,6 +13,7 @@ TEXTS = {
         "subscribe_prompt": "📣 Подпишитесь на Telegram-канал фестиваля — @bitcoinpizzafest",
         "not_subscribed": "Похоже, вы ещё не подписались на канал. Подпишитесь и нажмите «Проверить подписку ✅» ещё раз.",
         "giveaway_btn": "✈️ Розыгрыш авиабилетов",
+        "humo_quiz_btn": "HUMO: тест финансовой грамотности",
         "participate_btn": "Участвую",
         "giveaway_text": (
             "<b>🧳 Пора собирать чемоданы!</b>\n\n"
@@ -57,6 +58,7 @@ TEXTS = {
         "subscribe_prompt": "📣 Festivalning Telegram-kanaliga obuna bo'ling — @bitcoinpizzafest",
         "not_subscribed": "Aftidan, siz hali kanalga obuna bo'lmagansiz. Obuna bo'ling va «Obunani tekshirish ✅» tugmasini yana bir marta bosing.",
         "giveaway_btn": "✈️ Aviachiptalar tanlovi",
+        "humo_quiz_btn": "HUMO: moliyaviy savodxonlik testi",
         "participate_btn": "Ishtirok etaman",
         "giveaway_text": (
             "<b>🧳 Chamadonlarni yig'ish vaqti keldi!</b>\n\n"
@@ -101,6 +103,7 @@ TEXTS = {
         "subscribe_prompt": "📣 Subscribe to the festival Telegram channel — @bitcoinpizzafest",
         "not_subscribed": "It looks like you haven't subscribed to the channel yet. Please subscribe and tap \"Check subscription ✅\" again.",
         "giveaway_btn": "✈️ Airline Tickets Giveaway",
+        "humo_quiz_btn": "HUMO: тест финансовой грамотности",
         "participate_btn": "Participate",
         "giveaway_text": (
             "<b>🧳 Time to pack your bags!</b>\n\n"
@@ -137,4 +140,374 @@ LANGUAGE_BUTTONS = {
     "🇷🇺 Русский": "ru",
     "🇺🇿 O'zbekcha": "uz",
     "🇬🇧 English": "en",
+}
+
+HUMO_QUESTIONS = [
+    {
+        "id": 1,
+        "question": {
+            "ru": "Вам звонят из «службы безопасности банка» и просят продиктовать код из СМС, чтобы отменить подозрительный перевод с вашей карты Humo. Ваши действия?",
+            "uz": "Sizga \"bank xavfsizlik xizmati\"dan qo'ng'iroq qilib, HUMO kartangizdan shubhali o'tkazmani bekor qilish uchun SMS-kodni aytishni so'rashdi. Nima qilasiz?",
+        },
+        "options": {
+            "A": {
+                "ru": "Продиктую, это же служба безопасности, им виднее.",
+                "uz": "Kodni aytaman, axir bu xavfsizlik xizmati-ku, ular yaxshiroq biladi.",
+            },
+            "B": {
+                "ru": "Назову неправильный код, чтобы запутать мошенников.",
+                "uz": "Firibgarlarni chalg'itish uchun noto'g'ri kod aytaman.",
+            },
+            "C": {
+                "ru": "Сброшу звонок и перезвоню в банк по официальному номеру.",
+                "uz": "Qo'ng'iroqni yakunlab, bankka rasmiy raqam orqali o'zim qayta qo'ng'iroq qilaman.",
+            },
+            "D": {
+                "ru": "Попрошу перевести звонок на главного менеджера.",
+                "uz": "Qo'ng'iroqni bosh menejerga ulab berishlarini so'rayman.",
+            },
+        },
+        "correct": "C",
+        "explanation": {
+            "ru": "Настоящие сотрудники банка никогда не просят код из СМС. Если сомневаетесь — кладите трубку и звоните в банк сами.",
+            "uz": "Haqiqiy bank xodimlari hech qachon SMS-kodni so'ramaydi. Agar shubhalansangiz — qo'ng'iroqni yakunlab, bankka o'zingiz qo'ng'iroq qiling.",
+        },
+    },
+    {
+        "id": 2,
+        "question": {
+            "ru": "Если злоумышленник попытается взломать блокчейн и приписать себе 100 Биткоинов, что произойдёт на самом деле?",
+            "uz": "Agar biror kishi blokcheynni buzib, o'ziga 100 Bitcoin yozib qo'ymoqchi bo'lsa, aslida nima sodir bo'ladi?",
+        },
+        "options": {
+            "A": {
+                "ru": "Транзакция пройдёт, но система спишет огромную комиссию за риск.",
+                "uz": "Tranzaksiya o'tadi, ammo tizim xavf uchun juda katta komissiya yechib oladi.",
+            },
+            "B": {
+                "ru": "Его аккаунт заблокирует служба поддержки блокчейна до выяснения обстоятельств.",
+                "uz": "Uning akkaunti blokcheyn qo'llab-quvvatlash xizmati tomonidan tekshiruv uchun bloklanadi.",
+            },
+            "C": {
+                "ru": "Остальные участники сети сверят свои копии базы данных, увидят несостыковку и отклонят эту запись.",
+                "uz": "Tarmoqdagi boshqa ishtirokchilar ma'lumotlar bazasi nusxalarini solishtirib, nomuvofiqlikni aniqlaydi va yozuvni rad etadi.",
+            },
+            "D": {
+                "ru": "Изменится только его копия базы, а у остальных пользователей балансы просто обнулятся.",
+                "uz": "Faqat uning bazasi o'zgaradi, boshqa foydalanuvchilarning balanslari esa nolga tushadi.",
+            },
+        },
+        "correct": "C",
+        "explanation": {
+            "ru": "В блокчейне нет единого сервера или «главного админа». Это распределённый реестр, где правдивость данных подтверждается большинством участников сети.",
+            "uz": "Blokcheynda yagona server yoki \"asosiy admin\" yo'q. Bu — ma'lumotlarning haqqoniyligi tarmoq ishtirokchilarining ko'pchiligi tomonidan tasdiqlanadigan taqsimlangan reyestr.",
+        },
+    },
+    {
+        "id": 3,
+        "question": {
+            "ru": "Вы покупаете кроссовки в новом интернет-магазине. Какой способ оплаты самый безопасный с точки зрения финансовой гигиены?",
+            "uz": "Siz yangi internet-do'kondan krossovka xarid qilmoqchisiz. Moliyaviy xavfsizlik nuqtayi nazaridan qaysi to'lov usuli eng xavfsiz?",
+        },
+        "options": {
+            "A": {
+                "ru": "Ввести данные зарплатной карты, на которой лежат все ваши сбережения.",
+                "uz": "Barcha jamg'armalaringiz saqlanadigan asosiy kartangiz ma'lumotlarini kiritish.",
+            },
+            "B": {
+                "ru": "Отправить деньги переводом P2P на личную карту продавца по номеру телефона.",
+                "uz": "Sotuvchining shaxsiy kartasiga telefon raqami orqali P2P o'tkazma yuborish.",
+            },
+            "C": {
+                "ru": "Выпустить виртуальную карту, перевести на неё ровно сумму покупки и оплатить ей.",
+                "uz": "Virtual karta ochib, unga aynan xarid summasini o'tkazib, shu karta orqali to'lash.",
+            },
+            "D": {
+                "ru": "Отправить фото своей карты в WhatsApp менеджеру магазина.",
+                "uz": "Kartangiz suratini WhatsApp orqali do'kon menejeriga yuborish.",
+            },
+        },
+        "correct": "C",
+        "explanation": {
+            "ru": "Виртуальная карта с лимитом — лучший «файрвол» для ваших денег. Даже если сайт окажется мошенническим, они не получат доступ к вашим основным средствам.",
+            "uz": "Limitga ega virtual karta — mablag'laringiz uchun eng yaxshi \"himoya devori\". Hatto sayt firibgar bo'lsa ham, ular asosiy mablag'laringizga kira olmaydi.",
+        },
+    },
+    {
+        "id": 4,
+        "question": {
+            "ru": "Вы решили накопить на мощный ноутбук и спрятали 10 000 000 сумов наличными в домашний сейф. Что произойдёт с этими деньгами ровно через год?",
+            "uz": "Siz kuchli noutbuk olish uchun 10 000 000 so'mni uy seyfida naqd pul ko'rinishida saqladingiz. Bir yildan keyin bu pul bilan nima bo'ladi?",
+        },
+        "options": {
+            "A": {
+                "ru": "Они автоматически немного прибавят в покупательной способности, если изменится курс валют.",
+                "uz": "Valyuta kursi o'zgarsa, pullarning xarid qobiliyati biroz oshadi.",
+            },
+            "B": {
+                "ru": "Ничего не изменится. В сейфе останется ровно 10 000 000 сумов — это самый надёжный способ сохранить сбережения.",
+                "uz": "Hech narsa o'zgarmaydi. Seyfda hamon 10 000 000 so'm qoladi — bu jamg'arma saqlashning eng ishonchli usuli.",
+            },
+            "C": {
+                "ru": "Купюр останется столько же, но из-за инфляции ноутбук подорожает, и ваших накоплений на него уже не хватит.",
+                "uz": "Pullar son jihatdan o'zgarmaydi, ammo inflyatsiya sabab noutbuk qimmatlashadi va jamg'armangiz yetmay qoladi.",
+            },
+            "D": {
+                "ru": "Банкноты старого образца могут выйти из обращения, и их придётся менять с потерей процента.",
+                "uz": "Eski kupyuralar muomaladan chiqib ketadi va ularni foiz yo'qotgan holda almashtirishga to'g'ri keladi.",
+            },
+        },
+        "correct": "C",
+        "explanation": {
+            "ru": "Это ловушка «номинальной иллюзии»: цифры на бумажках остаются теми же, но реальная ценность денег падает каждый день. Хранить наличные — значит гарантированно терять их часть.",
+            "uz": "Bu — \"nominal illyuziya\" tuzog'i. Qog'ozdagi raqamlar o'zgarmaydi, ammo pulning haqiqiy qiymati pasayib boradi. Naqd pulni shunchaki saqlash — mablag'ning bir qismini yo'qotish degani.",
+        },
+    },
+    {
+        "id": 5,
+        "question": {
+            "ru": "Главное правило инвестора — диверсификация. Что это значит на практике?",
+            "uz": "Investorning asosiy qoidasi — diversifikatsiya. Bu amalda nimani anglatadi?",
+        },
+        "options": {
+            "A": {
+                "ru": "Хранить все сбережения исключительно в наличных долларах.",
+                "uz": "Barcha jamg'armalarni faqat naqd dollarda saqlash.",
+            },
+            "B": {
+                "ru": "Распределять деньги по разным активам (вклады, карты, крипто-активы), чтобы снизить риски.",
+                "uz": "Xavflarni kamaytirish uchun mablag'larni turli aktivlarga (omonatlar, kartalar, kripto-aktivlar) taqsimlash.",
+            },
+            "C": {
+                "ru": "Покупать только те активы, которые сейчас быстрее всего растут.",
+                "uz": "Faqat hozir eng tez o'sayotgan aktivlarni sotib olish.",
+            },
+            "D": {
+                "ru": "Тратить меньше, чем зарабатываешь.",
+                "uz": "Topganingizdan kamroq sarflash.",
+            },
+        },
+        "correct": "B",
+        "explanation": {
+            "ru": "Не кладите все яйца в одну корзину. Симбиоз традиционных финансов (как Humo) и новых инструментов (как Asterium) — лучшая стратегия.",
+            "uz": "Barcha tuxumni bitta savatga solmang. An'anaviy moliya (masalan, HUMO) va yangi vositalar (masalan, Asterium) uyg'unligi — eng yaxshi strategiya.",
+        },
+    },
+    {
+        "id": 6,
+        "question": {
+            "ru": "Вы создали криптокошелек и получили seed-фразу (12 или 24 слова для восстановления доступа). Где её безопаснее всего хранить?",
+            "uz": "Siz kriptohamyon yaratdingiz va seed-fraza (kirishni tiklash uchun 12 yoki 24 ta so'z) oldingiz. Uni qayerda saqlash eng xavfsiz?",
+        },
+        "options": {
+            "A": {
+                "ru": "Сделать скриншот и отправить в «Избранное» в Telegram.",
+                "uz": "Skrinshot qilib, Telegram'dagi \"Saqlanganlar\"ga yuborish.",
+            },
+            "B": {
+                "ru": "Сохранить в заметках на телефоне.",
+                "uz": "Telefondagi eslatmalarda saqlash.",
+            },
+            "C": {
+                "ru": "Записать на листе бумаги и спрятать в надежном месте.",
+                "uz": "Qog'ozga yozib, ishonchli joyga yashirish.",
+            },
+            "D": {
+                "ru": "Отправить себе на email, чтобы не потерять.",
+                "uz": "Yo'qolib qolmasligi uchun o'zingizga email orqali yuborish.",
+            },
+        },
+        "correct": "C",
+        "explanation": {
+            "ru": "Seed-фраза в цифровом виде (скриншот, почта, облако) уязвима для хакеров. Бумага и сейф — всё ещё лучший метод хранения.",
+            "uz": "Seed-frazani raqamli ko'rinishda saqlash (skrinshot, email, bulut) xakerlar uchun zaif hisoblanadi. Qog'oz va seyf hanuzgacha eng xavfsiz usul.",
+        },
+    },
+    {
+        "id": 7,
+        "question": {
+            "ru": "Какие данные своей карты безопасно давать другим людям, чтобы они перевели вам деньги?",
+            "uz": "Kartangizga pul yuborishlari uchun qaysi ma'lumotlarni boshqalarga berish xavfsiz?",
+        },
+        "options": {
+            "A": {
+                "ru": "Только 16-значный номер карты на лицевой стороне (или привязанный телефон).",
+                "uz": "Faqat kartaning old tomonidagi 16 xonali raqamni (yoki bog'langan telefon raqamini).",
+            },
+            "B": {
+                "ru": "Номер карты и трёхзначный код (CVV/CVC) с обратной стороны.",
+                "uz": "Karta raqami va orqa tomondagi uch xonali CVV/CVC kodini.",
+            },
+            "C": {
+                "ru": "Номер карты и срок её действия.",
+                "uz": "Karta raqami va amal qilish muddatini.",
+            },
+            "D": {
+                "ru": "ПИН-код, если человек обещает его удалить.",
+                "uz": "PIN-kodni, agar odam uni o'chirib tashlashga va'da bersa.",
+            },
+        },
+        "correct": "A",
+        "explanation": {
+            "ru": "Для получения перевода достаточно только номера карты. CVV-код и срок действия нужны только вам для покупок в интернете.",
+            "uz": "Pul qabul qilish uchun faqat karta raqami yetarli. CVV-kod va amal qilish muddati faqat internet xaridlari uchun kerak bo'ladi.",
+        },
+    },
+    {
+        "id": 8,
+        "question": {
+            "ru": "Вы решили впервые купить крипто-активы. Какое предложение должно заставить вас немедленно прервать сделку?",
+            "uz": "Siz ilk bor kripto-aktiv sotib olishga qaror qildingiz. Qaysi taklif sizni darhol bitimni to'xtatishga majbur qilishi kerak?",
+        },
+        "options": {
+            "A": {
+                "ru": "Площадка просит вас пройти верификацию личности (сфотографировать паспорт).",
+                "uz": "Platforma shaxsni tasdiqlashni (pasport bilan suratga tushishni) so'raydi.",
+            },
+            "B": {
+                "ru": "Продавец в Telegram обещает гарантированную прибыль 50% в месяц, если вы переведёте ему деньги на карту.",
+                "uz": "Telegram'dagi sotuvchi kartasiga pul yuborsangiz, oyiga 50% kafolatlangan foyda va'da qiladi.",
+            },
+            "C": {
+                "ru": "Платформа предупреждает о комиссиях за ввод и вывод средств.",
+                "uz": "Platforma mablag' kiritish va chiqarish komissiyalari haqida ogohlantiradi.",
+            },
+            "D": {
+                "ru": "Менеджер в физическом крипто-магазине предлагает подписать официальный договор покупки.",
+                "uz": "Jismoniy kriptodo'kon menejeri sizga rasmiy xarid shartnomasini imzolashni taklif qiladi.",
+            },
+        },
+        "correct": "B",
+        "explanation": {
+            "ru": "Любые обещания «гарантированной огромной доходности» в анонимных чатах — это 100% скам. Безопаснее всего покупать крипто-активы легально: на регулируемых биржах или через официальные физические крипто-магазины.",
+            "uz": "Anonim chatlardagi \"kafolatlangan yuqori daromad\" va'dalari — bu 100% firibgarlik. Kripto-aktivlarni qonuniy tarzda — litsenziyalangan birjalar yoki rasmiy kriptodo'konlar orqali xarid qilish xavfsizroq.",
+        },
+    },
+    {
+        "id": 9,
+        "question": {
+            "ru": "Что такое «сложный процент» (одно из главных понятий в финансах)?",
+            "uz": "\"Murakkab foiz\" nima?",
+        },
+        "options": {
+            "A": {
+                "ru": "Комиссия, которую банк берет за переводы за границу.",
+                "uz": "Bank xalqaro o'tkazmalar uchun oladigan komissiya.",
+            },
+            "B": {
+                "ru": "Начисление процентов не только на начальную сумму, но и на уже заработанные проценты.",
+                "uz": "Foizlarning nafaqat boshlang'ich summaga, balki oldin yig'ilgan foizlarga ham hisoblanishi.",
+            },
+            "C": {
+                "ru": "Штраф за просрочку платежа по кредитной карте.",
+                "uz": "Kredit karta to'lovini kechiktirganlik uchun jarima.",
+            },
+            "D": {
+                "ru": "Процент, который меняется каждый день в зависимости от курса валют.",
+                "uz": "Valyuta kursiga qarab har kuni o'zgaradigan foiz.",
+            },
+        },
+        "correct": "B",
+        "explanation": {
+            "ru": "Сложный процент — это «магия» инвестирования, когда ваши деньги начинают делать новые деньги.",
+            "uz": "Murakkab foiz — bu investitsiyaning \"sehridir\", ya'ni pullaringiz yangi pullarni ishlab bera boshlaydi.",
+        },
+    },
+    {
+        "id": 10,
+        "question": {
+            "ru": "Как безопаснее всего сделать первые шаги в мире крипто-активов в Узбекистане?",
+            "uz": "O'zbekistonda kripto-aktivlar olamiga ilk qadamni qanday xavfsiz boshlash mumkin?",
+        },
+        "options": {
+            "A": {
+                "ru": "Найти блогера в Telegram и купить монеты, которые он рекламирует.",
+                "uz": "Telegram'dagi blogerni topib, u reklama qilayotgan tokenlarni sotib olish.",
+            },
+            "B": {
+                "ru": "Взять кредит и вложить в Биткоин, пока он растёт.",
+                "uz": "Kredit olib, Bitcoin o'sayotgan paytda unga investitsiya qilish.",
+            },
+            "C": {
+                "ru": "Зарегистрироваться на анонимной бирже без ввода паспортных данных.",
+                "uz": "Pasport ma'lumotlarisiz anonim birjada ro'yxatdan o'tish.",
+            },
+            "D": {
+                "ru": "Использовать легальные экосистемы с верификацией (KYC) для покупки понятных активов.",
+                "uz": "Tushunarli aktivlarni xarid qilish uchun verifikatsiyaga (KYC) ega qonuniy ekotizimlardan foydalanish.",
+            },
+        },
+        "correct": "D",
+        "explanation": {
+            "ru": "Безопасный старт — это работа в легальном поле с понятными правилами игры. Добро пожаловать в экосистему!",
+            "uz": "Xavfsiz start — bu aniq qoidalari bo'lgan qonuniy maydonda ishlashdir. Ekotizimga xush kelibsiz!",
+        },
+    },
+]
+
+HUMO_TEXTS = {
+    "ru": {
+        "intro": (
+            "🧠 <b>HUMO: Тест финансовой грамотности</b>\n\n"
+            "Проверьте свои знания в области финансов и крипто-активов!\n\n"
+            "10 вопросов. Правильно ответите на 8 и более — войдёте в розыгрыш платёжного кольца HUMO 💍\n\n"
+            "Готовы? Нажмите кнопку ниже!"
+        ),
+        "participate_btn": "Участвовать ✅",
+        "question_header": "Вопрос {n}/10",
+        "correct": "Правильно!",
+        "wrong_prefix": "Неправильно. Правильный ответ:",
+        "finished_prompt": "🎯 Тест завершён!\n\nХотите узнать результат?",
+        "show_result_btn": "Узнать результат 📊",
+        "success": (
+            "🎉 <b>Отличный результат!</b>\n\n"
+            "Вы правильно ответили на <b>[X] из 10</b> вопросов.\n\n"
+            "Поздравляем — вы становитесь участником розыгрыша платёжного кольца HUMO 💍\n\n"
+            "🏆 Победителя определим случайным образом <b>24 мая в 21:00</b> прямо на сцене Bitcoin Pizza Fest 2026.\n\n"
+            "Желаем удачи — возможно, именно вы уйдёте с фестиваля с технологичным призом от HUMO 🔥"
+        ),
+        "fail": (
+            "Спасибо за участие 🙌\n\n"
+            "Вы правильно ответили на <b>[X] из 10</b> вопросов.\n\n"
+            "К сожалению, для участия в розыгрыше платёжного кольца HUMO нужно набрать минимум 8 правильных ответов.\n\n"
+            "Но не расстраивайтесь — на Bitcoin Pizza Fest 2026 вас ждут другие розыгрыши, активности и призы от партнёров фестиваля 🔥"
+        ),
+        "already_completed": (
+            "Вы уже прошли тест финансовой грамотности HUMO.\n\n"
+            "Ваш результат: <b>[X] из 10</b> правильных ответов.\n\n"
+            "Если вы набрали 8 или больше правильных ответов — вы уже участвуете в розыгрыше платёжного кольца HUMO 💍"
+        ),
+    },
+    "uz": {
+        "intro": (
+            "🧠 <b>HUMO: Moliyaviy savodxonlik testi</b>\n\n"
+            "Moliya va kripto-aktivlar sohasidagi bilimlaringizni sinab ko'ring!\n\n"
+            "10 ta savol. 8 ta yoki undan ko'p to'g'ri javob bersangiz — HUMO to'lov uzugi qur'asiga kirasiz 💍\n\n"
+            "Tayyormisiz? Quyidagi tugmani bosing!"
+        ),
+        "participate_btn": "Ishtirok etish ✅",
+        "question_header": "{n}/10-savol",
+        "correct": "To'g'ri!",
+        "wrong_prefix": "Noto'g'ri. To'g'ri javob:",
+        "finished_prompt": "🎯 Test yakunlandi!\n\nNatijani bilmoqchimisiz?",
+        "show_result_btn": "Natijani ko'rish 📊",
+        "success": (
+            "🎉 <b>Ajoyib natija!</b>\n\n"
+            "Siz 10 ta savoldan <b>[X] tasiga</b> to'g'ri javob berdingiz.\n\n"
+            "Tabriklaymiz — siz HUMO to'lov uzugi qur'asiga ishtirokchi bo'lasiz 💍\n\n"
+            "🏆 G'olibni <b>24-may kuni soat 21:00</b> da Bitcoin Pizza Fest 2026 sahnasida tasodifiy tarzda aniqlaymiz.\n\n"
+            "Omad tilaymiz — balki aynan siz festivaldan HUMO'ning texnologik sovriniga ega bo'lib ketarsiz 🔥"
+        ),
+        "fail": (
+            "Ishtirok etganingiz uchun rahmat 🙌\n\n"
+            "Siz 10 ta savoldan <b>[X] tasiga</b> to'g'ri javob berdingiz.\n\n"
+            "Afsuski, HUMO to'lov uzugi qur'asida qatnashish uchun kamida 8 ta to'g'ri javob kerak.\n\n"
+            "Ammo xafa bo'lmang — Bitcoin Pizza Fest 2026'da festival hamkorlaridan boshqa qur'alar, aktivitilar va sovrinlar ham sizni kutmoqda 🔥"
+        ),
+        "already_completed": (
+            "Siz HUMO moliyaviy savodxonlik testini allaqachon topshirdingiz.\n\n"
+            "Natijangiz: <b>[X] ta</b> to'g'ri javob (10 tadan).\n\n"
+            "Agar siz 8 ta yoki undan ko'p to'g'ri javob bergan bo'lsangiz — siz allaqachon HUMO to'lov uzugi qur'asida ishtirok etyapsiz 💍"
+        ),
+    },
 }
