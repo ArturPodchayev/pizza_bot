@@ -15,6 +15,7 @@ from openpyxl.styles import Font, PatternFill, Alignment
 
 import db
 from config import ADMIN_IDS
+from keyboards import giveaway_menu_keyboard
 
 router = Router()
 logger = logging.getLogger(__name__)
@@ -272,7 +273,11 @@ async def do_broadcast(message: Message, state: FSMContext, bot: Bot) -> None:
     sent, failed = 0, 0
     for user in users:
         try:
-            await bot.send_message(user["telegram_id"], message.text)
+            await bot.send_message(
+                user["telegram_id"],
+                message.text,
+                reply_markup=giveaway_menu_keyboard(user["language"] or "ru"),
+            )
             sent += 1
         except (TelegramForbiddenError, TelegramBadRequest) as e:
             logger.warning(f"Broadcast failed for {user['telegram_id']}: {e}")
