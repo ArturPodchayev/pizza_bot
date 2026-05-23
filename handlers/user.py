@@ -43,6 +43,11 @@ async def cmd_start(message: Message, state: FSMContext) -> None:
             TEXTS[lang]["already_registered"],
             reply_markup=update_keyboard(lang),
         )
+        await message.answer(
+            TEXTS[lang]["success"],
+            reply_markup=giveaway_menu_keyboard(lang),
+            link_preview_options=LinkPreviewOptions(is_disabled=True),
+        )
         return
 
     await message.answer(
