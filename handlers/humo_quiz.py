@@ -19,6 +19,7 @@ router = Router()
 logger = logging.getLogger(__name__)
 
 HUMO_BTN_TEXTS = {TEXTS[lang]["humo_quiz_btn"] for lang in TEXTS}
+logger.info(f"HUMO_BTN_TEXTS: {HUMO_BTN_TEXTS}")
 
 
 class QuizStates(StatesGroup):

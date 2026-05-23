@@ -1,20 +1,28 @@
 import asyncio
 import logging
 
-from aiogram import Bot, Dispatcher
-from aiogram.client.default import DefaultBotProperties
-from aiogram.enums import ParseMode
-from aiogram.fsm.storage.memory import MemoryStorage
-
-import db
-from config import BOT_TOKEN, DATABASE_URL
-from handlers import user, admin, humo_quiz
-
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
 )
 logger = logging.getLogger(__name__)
+
+from aiogram import Bot, Dispatcher, Router, F
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
+from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.types import Message
+
+import db
+from config import BOT_TOKEN, DATABASE_URL
+from handlers import user, admin, humo_quiz
+
+_fallback_router = Router()
+
+
+@_fallback_router.message(F.text)
+async def unhandled_text(message: Message) -> None:
+    logger.info(f"UNHANDLED: user={message.from_user.id} text={message.text!r}")
 
 
 async def main() -> None:
@@ -29,6 +37,7 @@ async def main() -> None:
     dp.include_router(admin.router)
     dp.include_router(user.router)
     dp.include_router(humo_quiz.router)
+    dp.include_router(_fallback_router)
 
     logger.info("Bot started")
     try:
