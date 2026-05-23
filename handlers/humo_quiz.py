@@ -12,7 +12,6 @@ from aiogram.types import (
 )
 
 import db
-from config import ADMIN_IDS
 from texts import HUMO_QUESTIONS, HUMO_TEXTS, TEXTS
 
 router = Router()
@@ -50,17 +49,6 @@ def _question_text(lang: str, q_num: int) -> str:
 @router.message(F.text.in_(HUMO_BTN_TEXTS), StateFilter(None))
 async def handle_humo_btn(message: Message, state: FSMContext) -> None:
     logger.info(f"handle_humo_btn fired: user={message.from_user.id} text={repr(message.text)}")
-    if message.from_user.id not in ADMIN_IDS:
-        user = await db.get_user(message.from_user.id)
-        lang = (user["language"] if user else "ru") or "ru"
-        coming_soon = {
-            "ru": "🔜 Тест финансовой грамотности HUMO скоро откроется. Следите за анонсами!",
-            "uz": "🔜 HUMO moliyaviy savodxonlik testi tez orada ochiladi. E'lonlarni kuzatib boring!",
-            "en": "🔜 The HUMO Financial Literacy Test is coming soon. Stay tuned for announcements!",
-        }
-        await message.answer(coming_soon.get(lang, coming_soon["ru"]))
-        return
-
     user = await db.get_user(message.from_user.id)
     lang = (user["language"] if user else "ru") or "ru"
     if lang not in HUMO_TEXTS:
