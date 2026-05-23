@@ -56,9 +56,10 @@ async def cmd_start(message: Message, state: FSMContext) -> None:
 async def cb_update_no(callback: CallbackQuery, state: FSMContext) -> None:
     data = await state.get_data()
     lang = data.get("language", "ru")
-    await callback.message.edit_text(TEXTS[lang]["cancelled"], reply_markup=None)
+    await callback.message.edit_reply_markup(reply_markup=None)
     await callback.answer()
     await state.clear()
+    await callback.message.answer(TEXTS[lang]["cancelled"], reply_markup=giveaway_menu_keyboard(lang))
 
 
 @router.callback_query(F.data == "update_yes")
