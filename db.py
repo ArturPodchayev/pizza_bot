@@ -149,6 +149,18 @@ async def get_quiz_result(user_id: int) -> asyncpg.Record | None:
     )
 
 
+async def get_all_quiz_results() -> list[asyncpg.Record]:
+    return await pool.fetch(
+        """
+        SELECT u.telegram_id, u.username, u.full_name, u.phone,
+               q.score, q.qualified, q.completed_at
+        FROM humo_quiz_results q
+        JOIN users u ON u.telegram_id = q.user_id
+        ORDER BY q.completed_at
+        """
+    )
+
+
 async def get_qualified_users() -> list[asyncpg.Record]:
     return await pool.fetch(
         """

@@ -113,7 +113,8 @@ async def cmd_admin(message: Message) -> None:
         f"/broadcast — сделать рассылку\n"
         f"/users — количество участников\n"
         f"/refs — реферальная статистика\n"
-        f"/export_humo — база квалифицированных HUMO",
+        f"/export_humo — база квалифицированных HUMO\n"
+        f"/export_humo_all — все прошедшие тест (с баллами)",
         parse_mode="HTML",
     )
 
@@ -221,6 +222,73 @@ async def cmd_export_humo(message: Message) -> None:
     await message.answer_document(
         file,
         caption=f"📥 HUMO: квалифицированные участники\n✅ Всего: {len(users)}",
+    )
+
+
+def make_humo_all_excel(users: list) -> BytesIO:
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "HUMO All"
+
+    headers = ["#", "Telegram ID", "Username", "Full Name", "Phone", "Score", "Qualified", "Completed At"]
+    header_fill = PatternFill("solid", fgColor="F7931A")
+    header_font = Font(bold=True, color="FFFFFF")
+
+    for col, h in enumerate(headers, 1):
+        cell = ws.cell(row=1, column=col, value=h)
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(horizontal="center")
+
+    ws.column_dimensions["A"].width = 5
+    ws.column_dimensions["B"].width = 15
+    ws.column_dimensions["C"].width = 20
+    ws.column_dimensions["D"].width = 30
+    ws.column_dimensions["E"].width = 20
+    ws.column_dimensions["F"].width = 8
+    ws.column_dimensions["G"].width = 12
+    ws.column_dimensions["H"].width = 22
+
+    for i, u in enumerate(users, 1):
+        ws.append([
+            i,
+            u["telegram_id"],
+            u["username"] or "—",
+            u["full_name"],
+            u["phone"],
+            u["score"],
+            str(u["qualified"]),
+            str(u["completed_at"]),
+        ])
+
+    buf = BytesIO()
+    wb.save(buf)
+    buf.seek(0)
+    return buf
+
+
+@router.message(Command("export_humo_all"))
+async def cmd_export_humo_all(message: Message) -> None:
+    if not is_admin(message.from_user.id):
+        return
+
+    users = await db.get_all_quiz_results()
+    if not users:
+        await message.answer("Никто ещё не прошёл тест HUMO.")
+        return
+
+    buf = make_humo_all_excel(users)
+    filename = f"humo_all_{datetime.now().strftime('%Y%m%d_%H%M')}.xlsx"
+    file = BufferedInputFile(buf.read(), filename=filename)
+
+    qualified_count = sum(1 for u in users if u["qualified"])
+    await message.answer_document(
+        file,
+        caption=(
+            f"📥 HUMO: все прошедшие тест\n"
+            f"👥 Всего: {len(users)}\n"
+            f"✅ Квалифицированных (≥8): {qualified_count}"
+        ),
     )
 
 
